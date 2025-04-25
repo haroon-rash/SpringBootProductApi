@@ -1,11 +1,10 @@
 package com.restfullApi.ProductLists.Products.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 
 @Entity
@@ -17,8 +16,9 @@ public class Categories {
     private int id;
     private String name;
 
-
-
+@OneToMany(mappedBy = "categories", cascade=CascadeType.ALL)
+//cascade dell all product if delete categories
+private List<Product> product;
 
 
 }
